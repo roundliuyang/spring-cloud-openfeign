@@ -392,10 +392,12 @@ public class FeignClientFactoryBean
 	}
 
 	protected <T> T loadBalance(Feign.Builder builder, FeignClientFactory context, HardCodedTarget<T> target) {
+		// Feign发送请求以及接受响应的http client，默认是Client.Default的实现，可以修改成OkHttp、HttpClient等
 		Client client = getOptional(context, Client.class);
 		if (client != null) {
-			builder.client(client);
+			builder.client(client);   // 针对当前Feign客户端，设置网络通信的client
 			applyBuildCustomizers(context, builder);
+			// targeter表示HystrixTarger实例，因为Feign可以集成Hystrix实现熔断，所以这里会一层包装。
 			Targeter targeter = get(context, Targeter.class);
 			return targeter.target(this, builder, context, target);
 		}

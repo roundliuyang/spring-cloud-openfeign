@@ -114,6 +114,9 @@ public class FeignAutoConfiguration {
 		return HasFeatures.namedFeature("Feign", Feign.class);
 	}
 
+	/**
+	 * 在初始化FeignContext时，会把configurations放入到FeignContext中。configuration表示当前被扫描到的所有@FeignClient。
+	 */
 	@Bean
 	public FeignClientFactory feignContext() {
 		FeignClientFactory context = new FeignClientFactory();

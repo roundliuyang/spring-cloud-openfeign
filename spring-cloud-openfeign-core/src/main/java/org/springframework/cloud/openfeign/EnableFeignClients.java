@@ -25,6 +25,7 @@ import java.lang.annotation.Target;
 import org.springframework.context.annotation.Import;
 
 /**
+ * 扮演了“启动开关的角色”，它使用Spring 框架的 Import 注解导入了 FeignClientsRegistrar 类，开始了OpenFeign 组件的加载过程
  * Scans for interfaces that declare they are feign clients (via
  * {@link org.springframework.cloud.openfeign.FeignClient} <code>@FeignClient</code>).
  * Configures component scanning directives for use with

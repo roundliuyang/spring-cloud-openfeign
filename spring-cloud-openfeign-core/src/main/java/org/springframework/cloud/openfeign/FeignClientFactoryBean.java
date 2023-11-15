@@ -58,6 +58,8 @@ import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 /**
+ * FeignClientFactoryBean 有两个重要的功能，一个是解析FeignClient接口中的请求路径和降级函数的配置信息；
+ * 另一个是触发动态代理的构造过程。其中，动态代理构造是由更下一层的 ReflectiveFeign 完成的。
  * @author Spencer Gibb
  * @author Venil Noronha
  * @author Eko Kurniawan Khannedy

@@ -158,6 +158,7 @@ public class SpringEncoder implements Encoder {
 				request.headers(null);
 				// converters can modify headers, so update the request
 				// with the modified headers
+				// 将outputMessage中的头部信息复制到请求模板中
 				request.headers(new LinkedHashMap<>(outputMessage.getHeaders()));
 
 				// do not use charset for binary data and protobuf
@@ -176,6 +177,7 @@ public class SpringEncoder implements Encoder {
 				else {
 					charset = StandardCharsets.UTF_8;
 				}
+				// 将转换后的消息体以字节数组的形式设置到请求模板中，并指定字符集编码
 				request.body(outputMessage.getOutputStream().toByteArray(), charset);
 				return;
 			}
